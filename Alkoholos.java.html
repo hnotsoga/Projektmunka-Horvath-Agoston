@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Alkoholos.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Alkoholos.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.italwebshop2</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.AdapterView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ArrayAdapter</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.ListView</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Toast</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.ArrayList</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">java.util.List</span><span class="s0">;</span>
+
+
+<span class="s0">public class </span><span class="s1">Alkoholos </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s0">private </span><span class="s1">List&lt;String&gt; drinkList</span><span class="s0">;</span>
+    <span class="s0">private </span><span class="s1">ArrayAdapter&lt;String&gt; drinkAdapter</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_alkoholos)</span><span class="s0">;</span>
+
+        <span class="s1">ListView drinkListView = findViewById(R.id.drinkListView)</span><span class="s0">;</span>
+        <span class="s1">drinkList = </span><span class="s0">new </span><span class="s1">ArrayList&lt;&gt;()</span><span class="s0">;</span>
+        <span class="s1">drinkAdapter = </span><span class="s0">new </span><span class="s1">ArrayAdapter&lt;&gt;(</span><span class="s0">this, </span><span class="s1">android.R.layout.simple_list_item_1</span><span class="s0">, </span><span class="s1">drinkList)</span><span class="s0">;</span>
+        <span class="s1">drinkListView.setAdapter(drinkAdapter)</span><span class="s0">;</span>
+
+        <span class="s1">drinkList.add(</span><span class="s2">&quot;Sör (Borsodi) - 400Ft&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">drinkList.add(</span><span class="s2">&quot;Bor (Nyakas Pince)&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">drinkList.add(</span><span class="s2">&quot;Pálinka - 6000Ft&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">drinkList.add(</span><span class="s2">&quot;Likőr - 5000Ft&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">drinkList.add(</span><span class="s2">&quot;Vodka - 4000Ft&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">drinkList.add(</span><span class="s2">&quot;Tequila - 6000Ft&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">drinkList.add(</span><span class="s2">&quot;Gin - 6000Ft&quot;</span><span class="s1">)</span><span class="s0">;</span>
+
+        <span class="s1">drinkListView.setOnItemClickListener(</span><span class="s0">new </span><span class="s1">AdapterView.OnItemClickListener() {</span>
+            <span class="s1">@Override</span>
+            <span class="s0">public void </span><span class="s1">onItemClick(AdapterView&lt;?&gt; parent</span><span class="s0">, </span><span class="s1">View view</span><span class="s0">, int </span><span class="s1">position</span><span class="s0">, long </span><span class="s1">id) {</span>
+                <span class="s1">String drink = drinkAdapter.getItem(position)</span><span class="s0">;</span>
+                <span class="s1">Toast.makeText(Alkoholos.</span><span class="s0">this, </span><span class="s1">drink + </span><span class="s2">&quot; added to cart.&quot;</span><span class="s0">, </span><span class="s1">Toast.LENGTH_SHORT).show()</span><span class="s0">;</span>
+                <span class="s1">Cart.getCartList().add(drink)</span><span class="s0">;</span>
+            <span class="s1">}</span>
+        <span class="s1">})</span><span class="s0">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+
+</pre>
+</body>
+</html>
